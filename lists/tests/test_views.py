@@ -71,7 +71,6 @@ class ListViewTest(TestCase):
     def test_for_invalid_input_nothing_saved_to_db(self):
         self.post_invalid_input()
         self.assertEqual(Item.objects.count(), 0)
-        #self.assertEqual(List.objects.count(), 0)
     
     def test_for_invalid_input_renders_list_template(self):
         response = self.post_invalid_input()
