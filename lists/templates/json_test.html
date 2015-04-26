@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>To-Do lists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/base.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 jumbotron">
+            <div class="text-center">
+                <input id="id_text">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script>
+    /*global $, Superlists, navigator */
+    $(document).ready(function () {
+        var textObj = $("#id_text");
+        textObj.on("blur", function () {
+            $.ajax({
+                type: "get",
+                url: "./json_test",
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data['foo'].length; ++i) {
+                        alert(data['foo'][i]);
+                    }
+                    console.log(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("error");
+                }
+            })
+
+        });
+    });
+</script>
+</body>
+</html>
